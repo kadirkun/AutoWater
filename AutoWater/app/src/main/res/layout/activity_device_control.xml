@@ -1,0 +1,182 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context="com.example.autowater.DeviceControl">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start water at"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_seek_bar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/start_seek_bar"
+        android:layout_width="352dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/humidity"
+        style="@style/CircularDeterminateProgressBar"
+        android:layout_width="99dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:max="100"
+        android:min="0"
+        tools:test="60%"
+        app:layout_constraintStart_toEndOf="@+id/soil_humidity"
+        app:layout_constraintTop_toBottomOf="@+id/plant_control_title" />
+
+    <SeekBar
+        android:id="@+id/stop_seek_bar"
+        android:layout_width="352dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/update_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/plant_control_title"
+        android:layout_width="382dp"
+        android:layout_height="35dp"
+        android:text="Plant Control"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop water at"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/stop_seek_bar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/soil_humidity"
+        style="@style/CircularDeterminateProgressBar"
+        android:layout_width="99dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:max="100"
+        android:min="0"
+        tools:test="60%"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plant_control_title" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="114dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center|center_horizontal"
+        android:text="@string/default_temperature"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.677"
+        app:layout_constraintStart_toEndOf="@+id/humidity"
+        app:layout_constraintTop_toBottomOf="@+id/plant_control_title" />
+
+    <TextView
+        android:id="@+id/humidity_text"
+        android:layout_width="99dp"
+        android:layout_height="85dp"
+        android:gravity="center|center_horizontal"
+        android:text="@string/default_humidity"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/humidity"
+        app:layout_constraintEnd_toEndOf="@+id/humidity"
+        app:layout_constraintStart_toStartOf="@+id/humidity"
+        app:layout_constraintTop_toTopOf="@+id/humidity" />
+
+    <TextView
+        android:id="@+id/soil_humidity_text"
+        android:layout_width="99dp"
+        android:layout_height="85dp"
+        android:gravity="center|center_horizontal"
+        android:text="@string/default_humidity"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/soil_humidity"
+        app:layout_constraintEnd_toEndOf="@+id/soil_humidity"
+        app:layout_constraintStart_toStartOf="@+id/soil_humidity"
+        app:layout_constraintTop_toTopOf="@+id/soil_humidity" />
+
+    <Button
+        android:id="@+id/dis_btn"
+        android:layout_width="288dp"
+        android:layout_height="46dp"
+        android:text="Disconnect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/instant_watering"
+        android:layout_width="194dp"
+        android:layout_height="46dp"
+        android:text="Water Now"
+        app:layout_constraintBottom_toTopOf="@+id/dis_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Air Temperature"
+        app:layout_constraintEnd_toEndOf="@+id/temperature"
+        app:layout_constraintStart_toStartOf="@+id/temperature"
+        app:layout_constraintTop_toBottomOf="@+id/temperature" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Air Humidity"
+        app:layout_constraintEnd_toEndOf="@+id/humidity"
+        app:layout_constraintStart_toStartOf="@+id/humidity"
+        app:layout_constraintTop_toBottomOf="@+id/humidity" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Soil Humidity"
+        app:layout_constraintEnd_toEndOf="@+id/soil_humidity"
+        app:layout_constraintStart_toStartOf="@+id/soil_humidity"
+        app:layout_constraintTop_toBottomOf="@+id/soil_humidity" />
+
+    <Button
+        android:id="@+id/update_btn"
+        android:layout_width="194dp"
+        android:layout_height="46dp"
+        android:text="Update"
+        app:layout_constraintBottom_toTopOf="@+id/instant_watering"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

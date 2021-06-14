@@ -27,8 +27,8 @@
         </activity>
 
         <activity
-            android:name="com.example.autowater.ledControl"
-            android:label="LED Control">
+            android:name="com.example.autowater.DeviceControl"
+            android:label="@string/app_name">
 
         </activity>
     </application>

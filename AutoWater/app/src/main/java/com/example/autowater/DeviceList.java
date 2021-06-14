@@ -4,8 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -44,35 +43,30 @@ public class DeviceList extends AppCompatActivity {
                     Toast.LENGTH_LONG
             ).show();
             finish();
-        }
-        else if (!myBluetooth.isEnabled()) {
+        } else if (!myBluetooth.isEnabled()) {
             Intent turnBTon = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(turnBTon, 1);
         }
 
-        btnPaired.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pairedDevicesList();
-            }
-        });
+        btnPaired.setOnClickListener(v -> pairedDevicesList());
     }
 
     private void pairedDevicesList() {
         pairedDevices = myBluetooth.getBondedDevices();
         ArrayList list = new ArrayList();
 
+        list.add("TEST\n00:00:00:00:00:00");
+
         if (pairedDevices.size() > 0) {
             for (BluetoothDevice bt : pairedDevices) {
                 list.add(bt.getName() + "\n" + bt.getAddress());
             }
-        }
-        else {
+        } else {
             Toast.makeText(getApplicationContext(), "No Paired Bluetooth Devices Found.", Toast.LENGTH_LONG).show();
         }
 
         final ArrayAdapter adapter = new ArrayAdapter(
-                this,
+                getApplication(),
                 android.R.layout.simple_list_item_1,
                 list
         );
@@ -84,36 +78,14 @@ public class DeviceList extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
             String info = ((TextView) v).getText().toString();
+            Log.println(Log.INFO,"click ting", info);
             String address = info.substring(info.length() - 17);
 
-            Intent i = new Intent(DeviceList.this, ledControl.class);
+            Intent i = new Intent(DeviceList.this, DeviceControl.class);
 
             //Change the activity.
             i.putExtra(EXTRA_ADDRESS, address); //this will be received at ledControl (class) Activity
             startActivity(i);
         }
     };
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_device_list, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
